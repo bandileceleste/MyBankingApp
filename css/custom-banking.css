@@ -1,0 +1,195 @@
+/* css/custom-banking.css */
+
+/* Import Fonts (Alternative to HTML Link) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #444444; /* Default text color */
+}
+
+/* Hero Section Styles */
+#hero-banking {
+    width: 100%;
+    /* Adjust height as needed, vh is viewport height */
+    height: 70vh;
+    /* Example Gradient - Replace with image or color */
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,100,200,1) 100%);
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* White text for dark background */
+    text-align: center;
+    padding: 20px;
+}
+
+#hero-banking h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#hero-banking h2 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+#hero-banking .btn-get-started {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    color: #fff;
+    background: #0d6efd; /* Bootstrap Primary */
+    border: 2px solid #0d6efd;
+    text-decoration: none;
+}
+
+#hero-banking .btn-get-started:hover {
+    background: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+
+/* Services Section Styles */
+.services-section {
+    padding: 60px 0;
+    overflow: hidden; /* Ensures AOS animations look good */
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+    color: #333; /* Darker title color */
+}
+
+.section-title h2::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #0d6efd; /* Bootstrap Primary */
+    bottom: 0;
+    left: calc(50% - 25px);
+}
+
+.section-title p {
+    margin-bottom: 0;
+    color: #666; /* Lighter description text */
+}
+
+
+.service-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none; /* Remove default card border */
+    border-radius: 10px; /* Softer corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    height: 100%; /* Ensure cards have same height in a row */
+    background-color: #fff; /* Ensure card background is white */
+    overflow: hidden; /* Keep content within rounded corners */
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15); /* Larger shadow on hover */
+    color: inherit; /* Ensure text color doesn't change unexpectedly */
+}
+
+.service-card .card-img-top-icon {
+    font-size: 4rem; /* Larger icons */
+    margin: 20px auto 10px auto; /* Center icon with spacing */
+    color: #0d6efd; /* Icon color */
+    line-height: 1;
+}
+
+.service-card .card-body {
+   text-align: center;
+   padding: 15px 20px 25px 20px; /* Adjust padding */
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1; /* Allows body to fill space */
+}
+
+.service-card .card-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    color: #333; /* Slightly darker title */
+}
+
+.service-card .card-text {
+    color: #6c757d; /* Bootstrap muted color */
+    font-size: 0.95rem;
+    flex-grow: 1; /* Allows text to push content down if needed */
+    margin-bottom: 0; /* Remove default bottom margin if any */
+}
+
+.service-card em {
+    font-style: normal; /* Remove italics if not desired */
+    font-weight: 600; /* Make emphasized text bold */
+    color: #0a58ca; /* Darker blue */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #hero-banking h1 {
+        font-size: 36px;
+        line-height: 42px;
+    }
+    #hero-banking h2 {
+        font-size: 20px;
+    }
+    .service-card .card-img-top-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #hero-banking {
+        height: 60vh;
+    }
+     #hero-banking h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    #hero-banking h2 {
+        font-size: 18px;
+    }
+    .section-title h2 {
+        font-size: 28px;
+    }
+    .service-card .card-title {
+        font-size: 1.1rem;
+    }
+     .service-card .card-text {
+        font-size: 0.9rem;
+    }
+}

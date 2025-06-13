@@ -1,0 +1,129 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BankingApp.master.cs" Inherits="BankingApp.BankingApp" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title>Banking App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%-- Existing jQuery --%>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <%-- Bootstrap CSS --%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <%-- ** added bootstrap icon CSS ** --%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <%-- ** added AOS (Animate on Scroll) CSS ** --%>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <%-- custom CSS --%>
+    <link rel="stylesheet" href="mystyles.css" />
+
+    <%-- ** link to custom banking CSS ** --%>
+    <link href="css/custom-banking.css" rel="stylesheet" />
+
+    <%-- google fonts --%>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%-- Applying classes directly to nav for better control --%>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="HomePage.aspx"> <%-- Link brand to homepage --%>
+                    <img src="imgs/bank1.png" width="30" height="30" class="d-inline-block align-top" alt="Bank Logo" />
+                    Celeste Banking
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link text-white" href="HomePage.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-white" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownAccounts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Accounts
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownAccounts">
+                            <li><a class="dropdown-item" href="~/LoginPage.aspx">Cheque Account</a></li>
+                            <li><a class="dropdown-item" href="~/LoginPage.aspx">Savings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/LoginPage.aspx">Current</a></li>
+                            <li><a class="dropdown-item" href="~/LoginPage.aspx">Transactional</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <asp:LinkButton CssClass="nav-link text-white" ID="lnkLogin" runat="server" PostBackUrl="~/LoginPage.aspx">User Login</asp:LinkButton>
+                        </li>
+                        <li class="nav-item">
+                            <asp:LinkButton CssClass="nav-link text-white" ID="lnkRegister" runat="server" PostBackUrl="~/RegistrationPage.aspx">Register</asp:LinkButton>
+                        </li>
+                        <li class="nav-item">
+                            <asp:LinkButton CssClass="nav-link text-white" ID="lnkLogOut" runat="server" OnClick="lnkLogOut_Click">Log Out</asp:LinkButton>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <%-- Main Content Area --%>
+        <main class="main-content" role="main">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <%-- Page specific content goes here --%>
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <%-- Footer --%>
+        <footer class="footer bg-primary text-white mt-auto py-3">
+            <div class="container text-center">
+                 <%-- Link for Admin Login --%>
+                 <p><a class="text-white link-light" href="AdminLogin.aspx">Admin Login</a></p>
+
+                 <small>© <%= DateTime.Now.Year %> Created By Celeste Using ASP.Net & Bootstrap for frontend, C# for backend, and MS SQL Server for database</small>
+            </div>
+        </footer>
+
+
+        <%-- ** Added Bootstrap 5 JS Bundle (includes Popper) - Place BEFORE closing </form> or </body> ** --%>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        <%-- ** Added AOS JS ** --%>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <%-- ** Initialize AOS ** --%>
+        <script>
+            // Ensure AOS is initialized after the DOM is ready
+            document.addEventListener('DOMContentLoaded', (event) => {
+                AOS.init({
+                    duration: 1000, // Animation duration in ms
+                    easing: 'ease-in-out', // Animation easing
+                    once: true, // Whether animation should happen only once - while scrolling down
+                    mirror: false // Whether elements should animate out while scrolling past them
+                });
+            });
+        </script>
+
+    </form>
+</body>
+</html>
